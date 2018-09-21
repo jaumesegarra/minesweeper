@@ -1,0 +1,60 @@
+/* latin */
+@font-face {
+	font-family: 'Fredoka One';
+	font-style: normal;
+	font-weight: 400;
+	src: local('Fredoka One'), local('FredokaOne-Regular'), url('fonts/freedokaOne.woff2') format('woff2');
+	unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2212, U+2215;
+}
+/* latin */
+@font-face {
+	font-family: 'Luckiest Guy';
+	font-style: normal;
+	font-weight: 400;
+	src: local('Luckiest Guy Regular'), local('LuckiestGuy-Regular'), url('fonts/freedokaOne2.woff2') format('woff2');
+	unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2212, U+2215;
+}
+
+body{
+	font-family: Helvetica;
+	background-color: #f2f2f2; 
+}
+h1{
+	text-transform: uppercase;
+	font-size: 4em;
+	font-family: 'Fredoka One', cursive;
+	text-align: center;
+	padding:0;
+	margin: 45px 0 0;
+	display: block;
+}
+
+button, .button{
+	background-color: #0860aa;
+	border: 1px solid #094f8a;
+	padding: 10px 15px;
+	border-radius: 5px;
+	color: #fff;
+	cursor: pointer;
+	min-width: 55px;
+}
+
+button:hover, .button:hover{
+	opacity:0.9;
+}
+
+button.light, .button.light{
+	background-color: #4885d2;
+	border-color: #0f7793;
+}
+
+button.whiter, .button.whiter{
+	background-color: #fffc;
+	border: 1px solid #457baa;
+	color: #0860aa;
+}
+
+button.red, .button.red {
+	background-color: #e01212;
+	border-color: #c51717;
+}
