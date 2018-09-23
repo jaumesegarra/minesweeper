@@ -1,13 +1,40 @@
-import React, { Component } from 'react';
+import React from 'react';
 import './App.scss';
 
-class App extends Component {
-  render() {
-    return (
-      <p>Hola</p>
-    );
-  }
+import { connect } from 'react-redux';
+import { HOME, GAME } from './pages';
+
+import Home from './components/Home/Home';
+import Game from './components/Game/Game';
+
+const mapStateToProps = state => {
+	return {
+		page: state.pager
+	}
 }
 
-//////
-export default App;
+class App extends React.PureComponent {
+	constructor(props){
+		super(props);
+
+		this.state = {
+
+		}
+	}
+
+	render() {
+	    return (
+	    	<div>
+		    	{ this.props.page.route === HOME &&
+		      		<Home />
+		    	}
+
+		    	{ this.props.page.route === GAME &&
+		      		<Game />
+		    	}
+	    	</div>
+	    );
+	}
+}
+
+export default connect(mapStateToProps)(App);

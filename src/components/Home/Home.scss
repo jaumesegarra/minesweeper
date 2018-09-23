@@ -1,0 +1,24 @@
+.home{
+	width: 760px;
+	display: grid;
+	grid-template-areas: 
+	"menu top"
+	"instructions top";
+	grid-gap: 10px;
+	grid-template-columns: auto 250px;
+
+	& > div{
+		background-color: #fff;
+		padding: 20px;
+		border: 1px solid #ddd;
+		border-radius: 10px;
+	}
+
+	.instructions{
+		grid-area: instructions;
+
+		p{
+			font-size: 14px
+		}
+	}
+}

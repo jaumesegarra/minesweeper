@@ -29,6 +29,10 @@ h1{
 	display: block;
 }
 
+h3{
+	margin: 0;
+}
+
 button, .button{
 	background-color: #0860aa;
 	border: 1px solid #094f8a;
@@ -37,6 +41,7 @@ button, .button{
 	color: #fff;
 	cursor: pointer;
 	min-width: 55px;
+	margin: 2px 5px 2px 0px;
 }
 
 button:hover, .button:hover{
