@@ -1,11 +1,9 @@
 import React from 'react';
+
 import './App.scss';
+import Template from './App.jsx';
 
 import { connect } from 'react-redux';
-import { HOME, GAME } from './pages';
-
-import Home from './components/Home/Home';
-import Game from './components/Game/Game';
 
 const mapStateToProps = state => {
 	return {
@@ -14,6 +12,7 @@ const mapStateToProps = state => {
 }
 
 class App extends React.PureComponent {
+
 	constructor(props){
 		super(props);
 
@@ -22,19 +21,7 @@ class App extends React.PureComponent {
 		}
 	}
 
-	render() {
-	    return (
-	    	<div>
-		    	{ this.props.page.route === HOME &&
-		      		<Home />
-		    	}
-
-		    	{ this.props.page.route === GAME &&
-		      		<Game />
-		    	}
-	    	</div>
-	    );
-	}
+	render = () => Template(this.props.page.route);
 }
 
 export default connect(mapStateToProps)(App);

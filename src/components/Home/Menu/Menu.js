@@ -1,5 +1,7 @@
 import React from 'react';
+
 import './Menu.scss';
+import Template from './Menu.jsx';
 
 import PREDEFINED_LEVELS from '../../../levels';
 import { GAME } from '../../../pages';
@@ -27,19 +29,7 @@ class Menu extends React.PureComponent {
 		});
 	}
 
-	render() {
-
-	    return (
-	      	<div className="menu">
-		      	<h3>New game</h3>
-
-				<p>Select your level on the game:</p>
-				<button className="whiter" onClick={ () => this.goToNewGame(0)}>Beginner</button>	
-				<button className="whiter" onClick={ () => this.goToNewGame(1)}>Professional</button>
-				<button className="whiter" onClick={ () => this.goToNewGame(2)}>Expert</button>
-			</div>
-	    );
-	}
+	render = () => Template(this.goToNewGame);
 }
 
 export default connect(null, mapDispatchToProps)(Menu);

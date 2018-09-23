@@ -1,16 +1,10 @@
 import React from 'react';
+
 import './Game.scss';
+import Template from './Game.jsx';
 
 export default class Game extends React.PureComponent {
 
-  render() {
+  render = () => Template();
 
-    return (
-      <div className="game">
-      		<div className="content">
-      			
-      		</div>
-      </div>
-    );
-  }
 }
