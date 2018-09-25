@@ -1,0 +1,8 @@
+.board{
+	border-collapse: collapse;
+	margin: 0 auto;
+
+	&, tr, td{
+		border: 2px solid #2c4078;
+	}
+}
