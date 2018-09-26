@@ -6,9 +6,9 @@ let defaultState = {
 	bombs: [],
 	numDiscovered: 0,
 	numFlagged: 0,
-	numSurprise: 0,
+	time: null,
 	isStarted: false,
-	isFinized: false,
+	isFinalized: false,
 	wasWinner: null
 }
 
@@ -78,6 +78,31 @@ function putBombs(board, bx, by, numBmbs, firstDiscoveredSquareX, firstDiscovere
 	return bombs;
 }
 
+function propagate(boarder, x, y){
+	let around = getAround(x, y, boarder.size[0], boarder.size[1]);
+
+	for(var i=0; i<around.length;i++)
+		discover(boarder, around[i][0], around[i][1]);
+}
+
+function discover(boarder, x, y){
+	let square = boarder.board[x][y];
+
+	if(!square.isDiscovered){
+		square.isDiscovered = true;
+
+		boarder.numDiscovered++;
+
+		if(square.value === 0)
+			propagate(boarder, x, y);
+
+		if(boarder.numDiscovered === (boarder.size[0]*boarder.size[1])-boarder.numBombs){
+			boarder.isFinalized =  true;
+			boarder.wasWinner = true;
+		}
+	}
+}
+
 export default (state = defaultState, action) => {
 	let board = null;
 	let bombs = null;
@@ -94,32 +119,39 @@ export default (state = defaultState, action) => {
 				bombs: [],
 				numDiscovered: 0,
 				numFlagged: 0,
-				numSurprise: 0,
+				time: null,
 				isStarted: false,
-				isFinized: false,
+				isFinalized: false,
 				wasWinner: null
 			};
 		case 'PUT_BOMBS':
 			board = JSON.parse(JSON.stringify(state.board));
 			bombs = putBombs(board, state.size[0], state.size[1], state.numBombs, action.payload.firstDiscovered[0], action.payload.firstDiscovered[1]);
 
-			return {...state, board: board, bombs: bombs, isStarted: true};
-		case 'DISCOVER_SQUARES':
-			board = state.board;
-			let pos = action.payload.firstDiscovered;
+			return {...state, board: board, bombs: bombs, time: 0, isStarted: true};
+		case 'DISCOVER_SQUARE':
+			let boarder = JSON.parse(JSON.stringify({ board: state.board, numDiscovered: state.numDiscovered, isFinalized: state.isFinalized, wasWinner: state.wasWinner, size: state.size, numBombs: state.numBombs }));
+			let pos = action.payload.discovered;
 
-			board[pos[0]][pos[1]].isDiscovered = true;
+			if(state.board[pos[0]][pos[1]].value === 9){
+				boarder.board[pos[0]][pos[1]].isDiscovered = true;
 
-			// Loop inside the board
+				return {...state, isFinalized: true, wasWinner: false, board: boarder.board};
+			}
+
+			discover(boarder, pos[0], pos[1]);
 			
-			return {...state, board: board};
-		case 'FINISH_AS_LOST':
-			board = state.board;
-			let pos_ = action.payload.exploitedBomb;
+			return {...state, board: boarder.board, numDiscovered: boarder.numDiscovered, isFinalized: boarder.isFinalized, wasWinner: boarder.wasWinner};
+		case 'TOGGLE_MARK_DOUBT_SQUARE':
+			board = JSON.parse(JSON.stringify(state.board));
 
-			board[pos_[0]][pos_[1]].isDiscovered = true;
+			let sq = board[action.payload.discovered[0]][action.payload.discovered[1]];
+			let numFlagged = state.numFlagged;
 
-			return {...state, isFinized: true, wasWinner: false}
+			if(sq.marked === -1) numFlagged++; else if(sq.marked === 0) numFlagged--;
+			sq.marked = (sq.marked === 1) ? -1 : sq.marked+1;
+
+			return {...state, board: board, numFlagged: numFlagged}
 		default: return state
 	}
 }

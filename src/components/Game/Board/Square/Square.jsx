@@ -1,7 +1,7 @@
 import React from 'react'; 
 
-export default (data, classes, click) => (
-      <td onClick={click} className={classes}>
+export default (data, classes, click, rClick) => (
+      <td onClick={click} onContextMenu={rClick} className={classes}>
             {
                   data.isDiscovered && data.value !== 0 && data.value !== 9 &&
                   (

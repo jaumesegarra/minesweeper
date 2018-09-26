@@ -18,6 +18,10 @@ const mapDispatchToProps = dispatch => ({
 
 class Game extends React.Component {
 
+	shouldComponentUpdate(nextProps, nextState) {
+		return false;
+	}
+
 	constructor(props) {
 		super(props);
 

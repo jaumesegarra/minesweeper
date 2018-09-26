@@ -23,14 +23,14 @@ export const putBombs = (data) => (
 
 export const discoverSquare = (data) => (
 	{
-		type: 'PUT_BOMBS',
-		position: position
+		type: 'DISCOVER_SQUARE',
+		discovered: position
 	}
 )
 
-export const finishAsLost = (data) => (
+export const toggleMarkDoubtSquare = (data) => (
 	{
-		type: 'FINISH_AS_LOST',
-		exploitedBomb: exploitedBomb
+		type: 'TOGGLE_MARK_DOUBT_SQUARE',
+		discovered: position
 	}
 )

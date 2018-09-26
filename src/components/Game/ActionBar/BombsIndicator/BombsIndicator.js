@@ -14,7 +14,7 @@ const mapStateToProps = state => {
 class BombsIndicator extends React.Component {
 
 	shouldComponentUpdate = (nextProps, nextState) => {
-		return nextProps.boarder.numBombs !== this.props.boarder.numBombs || nextProps.boarder.numFlagged !== this.props.boarder.numFlagged;
+		return this.props.boarder.numFlagged !== nextProps.boarder.numFlagged || nextProps.boarder.numBombs !== this.props.boarder.numBombs;
 	}
 
 	render = () => { 

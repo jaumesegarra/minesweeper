@@ -42,7 +42,7 @@ class ActionBar extends React.Component {
 	}
 
 	leaveGame = () => {
-		if(this.props.boarder.isStarted && !this.props.boarder.isFinized)
+		if(this.props.boarder.isStarted && !this.props.boarder.isFinalized)
 			this.refLeaveModal.current.show(this.leaveGameFunc);
 		else this.leaveGameFunc();
 	}
