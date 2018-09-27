@@ -6,6 +6,8 @@ import Template from './ActionBar.jsx';
 import { HOME } from '../../../pages';
 
 import { connect } from 'react-redux';
+import { changePage } from '../../../actions/pager';
+import { resetGame, newGame } from '../../../actions/boarder';
 
 const mapStateToProps = state => {
 	return {
@@ -14,12 +16,9 @@ const mapStateToProps = state => {
 }
 
 const mapDispatchToProps = dispatch => ({
-	changePage: (route, params) =>
-		dispatch({ type: "CHANGE_PAGE", payload: {route, params}}),
-	resetGame: () =>
-		dispatch({ type: "RESET"}),
-	newGame: (config) =>
-		dispatch({ type: "NEW_GAME", payload: config})
+	changePage: (route, params) => dispatch(changePage(route, params)),
+	resetGame: () => dispatch(resetGame()),
+	newGame: (size, bombs) => dispatch(newGame(size, bombs))
 });
 
 class ActionBar extends React.Component {
@@ -49,11 +48,7 @@ class ActionBar extends React.Component {
 
 	refreshGame = () => {
 		if(this.props.boarder.isStarted)
-			this.props.newGame({
-				boardX: this.props.boarder.size[0],
-				boardY: this.props.boarder.size[1],
-				bombs: this.props.boarder.numBombs
-			});
+			this.props.newGame(this.props.boarder.size, this.props.boarder.numBombs);
 	}
 
   	render = () => { 

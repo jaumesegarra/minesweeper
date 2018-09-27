@@ -4,6 +4,7 @@ import './Game.scss';
 import Template from './Game.jsx';
 
 import { connect } from 'react-redux';
+import { newGame } from '../../actions/boarder';
 
 const mapStateToProps = state => {
 	return {
@@ -12,8 +13,7 @@ const mapStateToProps = state => {
 }
 
 const mapDispatchToProps = dispatch => ({
-	newGame: (config) =>
-		dispatch({ type: "NEW_GAME", payload: config})
+	newGame: (size, bombs) => dispatch(newGame(size, bombs))
 });
 
 class Game extends React.Component {
@@ -25,13 +25,11 @@ class Game extends React.Component {
 	constructor(props) {
 		super(props);
 
-		this.props.newGame({
-			boardX: this.props.page.params.boardX,
-			boardY: this.props.page.params.boardY,
-			bombs: this.props.page.params.bombs
-		});
+		this.props.newGame(
+		    [this.props.page.params.boardX, this.props.page.params.boardY], 
+		    this.props.page.params.bombs
+		);
 	}
-
 
   	render = () => Template();
 

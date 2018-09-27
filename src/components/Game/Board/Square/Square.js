@@ -4,6 +4,7 @@ import './Square.scss';
 import Template from './Square.jsx';
 
 import { connect } from 'react-redux';
+import { putBombs, discoverSquare, toggleMarkDoubtSquare} from '../../../../actions/boarder';
 
 const mapStateToProps = state => {
 	return {
@@ -12,12 +13,9 @@ const mapStateToProps = state => {
 }
 
 const mapDispatchToProps = dispatch => ({
-	putBombs: (position) =>
-		dispatch({ type: "PUT_BOMBS", payload: {firstDiscovered: position}}),
-	discoverSquare: (position) =>
-		dispatch({ type: "DISCOVER_SQUARE", payload: {discovered: position}}),
-	toggleMarkDoubtSquare: (position) =>
-		dispatch({ type: "TOGGLE_MARK_DOUBT_SQUARE",  payload: {discovered: position}}),
+	putBombs: (position) => dispatch(putBombs(position)),
+	discoverSquare: (position) => dispatch(discoverSquare(position)),
+	toggleMarkDoubtSquare: (position) => dispatch(toggleMarkDoubtSquare(position)),
 });
 
 class Square extends React.Component {

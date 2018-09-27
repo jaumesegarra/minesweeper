@@ -1,7 +1,9 @@
-export const changePage = (data) => (
+export const changePage = (route, params) => (
 	{
 		type: 'CHANGE_PAGE',
-		route: route,
-		params: params
+		payload: {
+			route: route,
+			params: params
+		}
 	}
 )

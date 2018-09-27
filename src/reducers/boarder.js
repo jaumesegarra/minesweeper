@@ -113,9 +113,9 @@ export default (state = defaultState, action) => {
 		case 'NEW_GAME':
 			return {...state,
 				id: Math.floor(Math.random()*100000),
-				size: [action.payload.boardX, action.payload.boardY],
+				size: action.payload.size,
 				numBombs: action.payload.bombs,
-				board: createEmptyBoard(action.payload.boardX, action.payload.boardY),
+				board: createEmptyBoard(action.payload.size[0], action.payload.size[1]),
 				bombs: [],
 				numDiscovered: 0,
 				numFlagged: 0,
@@ -152,6 +152,8 @@ export default (state = defaultState, action) => {
 			sq.marked = (sq.marked === 1) ? -1 : sq.marked+1;
 
 			return {...state, board: board, numFlagged: numFlagged}
+		case 'PUT_TIME': 
+			return {...state, time: action.payload.time}
 		default: return state
 	}
 }

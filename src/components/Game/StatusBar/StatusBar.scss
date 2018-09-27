@@ -1,0 +1,33 @@
+.statusBar{
+	text-align: left;
+	display: flex;
+	padding-top: 10px;
+	margin-top: 10px;
+	border-top: 1px dashed #ddd;
+	
+	.emoji{
+		background-repeat: no-repeat;
+		background-size: cover;
+		width: 48px;
+		height: 48px;
+
+		&.happy{
+			background: url('./happy.png');
+		}
+
+		&.sad{
+			background: url('./sad.png');
+		}
+
+		&.lol{
+			background: url('./lol.png');
+		}
+	}
+
+	span{
+		font-size: 32px;
+		margin-top: 12px;
+		margin-left: 6px;
+		letter-spacing: 2px;
+	}
+}

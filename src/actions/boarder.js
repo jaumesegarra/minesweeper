@@ -1,36 +1,51 @@
-export const reset = () => (
+export const resetGame = () => (
 	{
 		type: 'RESET'
 	}
 )
 
-export const newGame = (data) => (
+export const newGame = (size, bombs) => (
 	{
 		type: 'NEW_GAME',
-		boardX: boardX,
-		boardY: boardY,
-		bombs: bombs,
-		level: level
+		payload: {
+			size: size,
+			bombs: bombs
+		}	
 	}
 )
 
-export const putBombs = (data) => (
+export const putBombs = (firstDiscovered) => (
 	{
 		type: 'PUT_BOMBS',
-		firstDiscovered: firstDiscovered
+		payload: {
+			firstDiscovered: firstDiscovered
+		}
 	}
 )
 
-export const discoverSquare = (data) => (
+export const discoverSquare = (position) => (
 	{
 		type: 'DISCOVER_SQUARE',
-		discovered: position
+		payload: {
+			discovered: position
+		}
 	}
 )
 
-export const toggleMarkDoubtSquare = (data) => (
+export const toggleMarkDoubtSquare = (position) => (
 	{
 		type: 'TOGGLE_MARK_DOUBT_SQUARE',
-		discovered: position
+		payload: {
+			discovered: position
+		}
+	}
+)
+
+export const putTime = (time) => (
+	{
+		type: 'PUT_TIME',
+		payload: {
+			time: time
+		}
 	}
 )

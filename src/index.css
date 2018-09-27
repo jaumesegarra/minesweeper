@@ -63,3 +63,9 @@ button.red, .button.red {
 	background-color: #e01212;
 	border-color: #c51717;
 }
+
+footer{
+	display: block !important;
+	text-align: center;
+	font-size: 12px
+}

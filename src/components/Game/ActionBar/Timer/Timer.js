@@ -31,6 +31,7 @@ class Timer extends React.Component {
 		};
 		this.startTime = null;
 		this.interval = null;
+		this.isUnmounted = false;
 	}
 
 	getDiffToCurrent(){
@@ -47,7 +48,13 @@ class Timer extends React.Component {
 			":" + 
 			(seconds < 10 ? "0"+seconds : seconds);
 
-		this.setState({time: time});
+		if(!this.isUnmounted)
+			this.setState({time: time});
+		else clearInterval(this.interval);
+	}
+
+	componentWillUnmount() {
+    	this.isUnmounted = true;
 	}
 
 	componentDidUpdate(prevProps, prevState){
