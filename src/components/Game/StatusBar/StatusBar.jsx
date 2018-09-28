@@ -1,8 +1,12 @@
 import React from 'react'; 
 
-export default (state) => (
+import SaveScoreModal from './SaveScoreModal/SaveScoreModal';
+
+export default (state, refSaveScore) => (
 	<div className="statusBar">
             <div className={'emoji '+state.emoji}></div>
             <span>{state.text}</span>
-      </div>
+
+            <SaveScoreModal ref={refSaveScore}/>
+    </div>
 );

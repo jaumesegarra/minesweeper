@@ -1,0 +1,23 @@
+.saveScoreModal{
+	form{
+		position: relative;
+	
+		& > *{
+			display: block;
+		}
+
+		input[type="text"]{
+			width: calc(100% - 20px);
+			padding: 8px;
+			border-radius: 2px;
+			border: 1px dotted #aaa;
+			font-size: 21px;
+			margin-bottom: 20px;
+		}
+
+		button{
+			display: block;
+			width: 100%;
+		}
+	}
+}

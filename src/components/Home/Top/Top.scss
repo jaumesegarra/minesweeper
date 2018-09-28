@@ -1,4 +1,60 @@
 .home .top{
 	width: 245px;
 	grid-area: top;
+
+	.scores{
+		overflow: auto;
+		max-height: 350px;
+		margin-top: 10px;
+
+		ul{
+			padding: 0;
+			counter-reset: item;
+			margin: 0;
+
+			& > li{
+				margin: 0;
+				margin-bottom: 10px;
+				padding: 0 0 0 2em;
+				text-indent: -2em;
+				list-style-type: none;
+				counter-increment: item;
+
+				&:before{
+					width: 1em;
+					font-weight: bold;
+					content: counter(item) ".";
+					float: left;
+					font-size: 20px;
+					color: #1c5fba;
+				}
+
+				& > div{
+					padding-left: 28px;
+					line-height: 18px;
+
+					&.user{
+						letter-spacing: 1px;
+						text-transform: uppercase;
+						font-weight: bold;
+						margin: 5px 0;
+					}
+					
+					&.score{
+						font-size: 16px;
+						
+						span{
+							font-size: 14px;
+							position: relative;
+							top: -1px;
+						}
+					}
+					&.boardDetails{
+						font-size: 12px;
+						color: #555;
+					}
+				}
+			}
+		}
+	}
 }

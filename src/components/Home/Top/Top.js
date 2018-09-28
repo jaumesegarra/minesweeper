@@ -3,7 +3,18 @@ import React from 'react';
 import './Top.scss';
 import Template from './Top.jsx';
 
-export default class Top extends React.PureComponent {
+import { connect } from 'react-redux';
 
-  render = Template;
+const mapStateToProps = state => {
+	return {
+		scores: state.scoreboard.scores
+	}
 }
+
+class Top extends React.PureComponent {
+
+  render = () => Template(this.props.scores);
+
+}
+
+export default connect(mapStateToProps)(Top);

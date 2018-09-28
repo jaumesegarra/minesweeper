@@ -3,6 +3,7 @@ import React from 'react';
 import './StatusBar.scss';
 import Template from './StatusBar.jsx';
 
+import { putScore } from '../../../actions/scoreboard';
 import { connect } from 'react-redux';
 
 const mapStateToProps = state => {
@@ -10,6 +11,10 @@ const mapStateToProps = state => {
 		boarder: state.boarder
 	}
 }
+
+const mapDispatchToProps = dispatch => ({
+	putScore: (user, boardSize, bombs, time) => dispatch(putScore(user, boardSize, bombs, time))
+});
 
 const STATES = [
 	{
@@ -32,13 +37,23 @@ const STATES = [
 
 class StatusBar extends React.Component {
 	
+	constructor(props){
+		super(props);
+
+		this.refSaveScore = React.createRef();
+	}
+
 	shouldComponentUpdate(nextProps, nextState) {
 		return nextProps.boarder.isFinalized !== this.props.boarder.isFinalized || nextProps.boarder.isStarted !== this.props.boarder.isStarted;
 	}
 
-	componentDidUpdate(prevProps, prevState){
+	saveScoreFunc = (username) => {
+		this.props.putScore(username, this.props.boarder.size, this.props.boarder.numBombs, this.props.boarder.time);
+	}
+
+	componentDidUpdate(prevProps, prevState){		
 		if(this.props.boarder.isFinalized && prevProps.boarder.isFinalized !== this.props.boarder.isFinalized && this.props.boarder.wasWinner)
-			console.log("YOU WIN!!");// Show modal registry the win
+			this.refSaveScore.current.show(this.saveScoreFunc);
 	}
 
   	render = () => {
@@ -50,8 +65,8 @@ class StatusBar extends React.Component {
   		else if(this.props.boarder.isFinalized && !this.props.boarder.wasWinner)
   			stateNmbr = 3;
 
-  		return Template(STATES[stateNmbr]);
+  		return Template(STATES[stateNmbr], this.refSaveScore);
   	}	
 }
 
-export default connect(mapStateToProps)(StatusBar);
+export default connect(mapStateToProps, mapDispatchToProps)(StatusBar);
