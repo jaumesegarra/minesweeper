@@ -1,6 +1,7 @@
 {
   "name": "minesweeper",
   "version": "0.1.0",
+  "homepage": "https://jaumesegarra.github.io/minesweeper",
   "private": true,
   "dependencies": {
     "autoprefixer": "7.1.6",
@@ -51,9 +52,12 @@
   "scripts": {
     "start": "node scripts/start.js",
     "build": "node scripts/build.js",
-    "test": "node scripts/test.js --env=jsdom"
+    "test": "node scripts/test.js --env=jsdom",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build"
   },
   "devDependencies": {
+    "gh-pages": "^2.0.0",
     "node-sass": "^4.9.3",
     "sass-loader": "^7.1.0"
   },

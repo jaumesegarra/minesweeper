@@ -14,10 +14,10 @@ const mapStateToProps = state => {
 class Board extends React.Component {
 	
 	shouldComponentUpdate(nextProps, nextState) {
-		return nextProps.boarder.board.length !== this.props.boarder.board.length;
+		return nextProps.boarder.board.size !== this.props.boarder.board.size;
 	}
 
-  	render = () => Template(this.props.boarder.board);
+  	render = () => Template(this.props.boarder.board.squares);
 
 }
 

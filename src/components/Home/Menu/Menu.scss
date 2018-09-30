@@ -1,5 +1,5 @@
 @mixin LinearBackground(){
-	background-color: blue;
+	background-color: #6db3f2;
 
 	background: -webkit-gradient(linear, 0% 50%, 51% 100%, from(#6db3f2), to(#1e69de));
 	background: -webkit-linear-gradient(top, #6db3f2 0%, #54a3ee 50%, #3690f0 51%, #1e69de 100%);

@@ -48,7 +48,7 @@ class StatusBar extends React.Component {
 	}
 
 	saveScoreFunc = (username) => {
-		this.props.putScore(username, this.props.boarder.size, this.props.boarder.numBombs, this.props.boarder.time);
+		this.props.putScore(username, this.props.boarder.board.size, this.props.boarder.board.numBombs, this.props.boarder.time);
 	}
 
 	componentDidUpdate(prevProps, prevState){		

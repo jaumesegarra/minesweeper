@@ -1,23 +1,23 @@
 @mixin LinearBackground(){
-	background-color: blue;
-
-	background: -webkit-gradient(linear, 0% 50%, 51% 100%, from(#6db3f2), to(#1e69de));
-	background: -webkit-linear-gradient(top, #6db3f2 0%, #54a3ee 50%, #3690f0 51%, #1e69de 100%);
-	background: -moz-linear-gradient(top, #6db3f2 0%, #54a3ee 50%, #3690f0 51%, #1e69de 100%);
-	background:	-ms-linear-gradient(top, #6db3f2 0%, #54a3ee 50%, #3690f0 51%, #1e69de 100%);
-	background: -o-linear-gradient(top, #6db3f2 0%, #54a3ee 50%, #3690f0 51%, #1e69de 100%);
+	background: url('background.png') no-repeat;
+	background-size: 30px 30px;
 }
 
 @mixin ImagewLinearBackground($imageURL){
-	background-color: blue;
-	background: url($imageURL);
-	background-repeat: no-repeat;
+	@include LinearBackground;
+	
+	position: relative;
 
-	background: url($imageURL), -webkit-gradient(linear, 0% 50%, 51% 100%, from(#6db3f2), to(#1e69de));
-	background: url($imageURL), -webkit-linear-gradient(top, #6db3f2 0%, #54a3ee 50%, #3690f0 51%, #1e69de 100%);
-	background: url($imageURL), -moz-linear-gradient(top, #6db3f2 0%, #54a3ee 50%, #3690f0 51%, #1e69de 100%);
-	background:	url($imageURL), -ms-linear-gradient(top, #6db3f2 0%, #54a3ee 50%, #3690f0 51%, #1e69de 100%);
-	background: url($imageURL), -o-linear-gradient(top, #6db3f2 0%, #54a3ee 50%, #3690f0 51%, #1e69de 100%);
+	&:after{
+		content: ' ';
+		width: 100%;
+		height: 100%;
+		background: url($imageURL);
+		position: absolute;
+		top: 0px;
+		left: 0px;
+		background-position: center;
+	}
 }
 
 .board td{

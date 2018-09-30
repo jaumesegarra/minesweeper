@@ -35,7 +35,7 @@ h3{
 
 button, .button{
 	background-color: #0860aa;
-	border: 1px solid #094f8a;
+	border: 2px solid #094f8a;
 	padding: 10px 15px;
 	border-radius: 5px;
 	color: #fff;
@@ -48,6 +48,11 @@ button:hover, .button:hover{
 	opacity:0.9;
 }
 
+button:focus, .button:focus{
+	border: 2px dotted #fff !important;
+	outline: 0;
+}
+
 button.light, .button.light{
 	background-color: #4885d2;
 	border-color: #0f7793;
@@ -55,8 +60,12 @@ button.light, .button.light{
 
 button.whiter, .button.whiter{
 	background-color: #fffc;
-	border: 1px solid #457baa;
+	border: 2px solid #5590c3;
 	color: #0860aa;
+}
+
+button.whiter:focus, .button.whiter:focus{
+	border-color: #0860aa !important
 }
 
 button.red, .button.red {

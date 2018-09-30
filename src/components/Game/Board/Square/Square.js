@@ -22,33 +22,33 @@ class Square extends React.Component {
 	
 	shouldComponentUpdate(nextProps, nextState) {
 
-		let current = this.props.boarder.board[this.props.pos[0]][this.props.pos[1]];
-		let next = nextProps.boarder.board[this.props.pos[0]][this.props.pos[1]];
+		let current = this.props.boarder.board.squares[this.props.pos[0]][this.props.pos[1]];
+		let next = nextProps.boarder.board.squares[this.props.pos[0]][this.props.pos[1]];
 
 		return current.isDiscovered !== next.isDiscovered || current.value !== next.value || current.marked !== next.marked || nextProps.boarder.isStarted !== this.props.boarder.isStarted || nextProps.boarder.isFinalized !== this.props.boarder.isFinalized
 	}
 
 	click = () => {
-		let data = this.props.boarder.board[this.props.pos[0]][this.props.pos[1]];
+		let data = this.props.boarder.board.squares[this.props.pos[0]][this.props.pos[1]];
 
 		if(!this.props.boarder.isStarted)
 			this.props.putBombs(this.props.pos);
 
 		if(!this.props.boarder.isFinalized && data.marked === -1)
-				this.props.discoverSquare(this.props.pos);
+			this.props.discoverSquare(this.props.pos);
 	}
 
 	rClick = (e) => {
 		e.preventDefault();
 
-		let data = this.props.boarder.board[this.props.pos[0]][this.props.pos[1]];
+		let data = this.props.boarder.board.squares[this.props.pos[0]][this.props.pos[1]];
 
 		if(this.props.boarder.isStarted && !this.props.boarder.isFinalized && !data.isDiscovered)
 			this.props.toggleMarkDoubtSquare(this.props.pos);
 	} 
 
   	render = () => {
-  		let data = this.props.boarder.board[this.props.pos[0]][this.props.pos[1]];
+  		let data = this.props.boarder.board.squares[this.props.pos[0]][this.props.pos[1]];
 
 	    let classNames = require('classnames/bind');
 

@@ -33,10 +33,18 @@ class ActionBar extends React.Component {
 		this.state = {};
 
 		this.refLeaveModal = React.createRef();
+
+		document.addEventListener('keydown', function(e) {
+			e = (e || window.event);
+
+			if (e.keyCode === 27 && this.refLeaveModal.current)
+				this.leaveGame();
+		}.bind(this), false);
 	}
 
 	leaveGameFunc = () => {
-		this.props.resetGame();
+		if(this.props.boarder.isStarted)
+			this.props.resetGame();
 		this.props.changePage(HOME, null);
 	}
 
@@ -48,7 +56,7 @@ class ActionBar extends React.Component {
 
 	refreshGame = () => {
 		if(this.props.boarder.isStarted)
-			this.props.newGame(this.props.boarder.size, this.props.boarder.numBombs);
+			this.props.newGame(this.props.boarder.board.size, this.props.boarder.board.numBombs);
 	}
 
   	render = () => { 

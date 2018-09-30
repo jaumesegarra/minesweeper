@@ -14,11 +14,11 @@ const mapStateToProps = state => {
 class BombsIndicator extends React.Component {
 
 	shouldComponentUpdate = (nextProps, nextState) => {
-		return this.props.boarder.numFlagged !== nextProps.boarder.numFlagged || nextProps.boarder.numBombs !== this.props.boarder.numBombs;
+		return this.props.boarder.board.numFlagged !== nextProps.boarder.board.numFlagged || nextProps.boarder.board.numBombs !== this.props.boarder.board.numBombs;
 	}
 
 	render = () => { 
-		let bmbs = this.props.boarder.numBombs - this.props.boarder.numFlagged;
+		let bmbs = this.props.boarder.board.numBombs - this.props.boarder.board.numFlagged;
 
   		return Template(bmbs);
  	}

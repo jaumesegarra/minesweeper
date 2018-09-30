@@ -9,6 +9,7 @@ class SaveScoreModal extends Modal {
 
 		this.state = {...super.state, 
 			username: '',
+			lastUsernameSaved: (localStorage.getItem("lastUser") || ''),
 			execFunc: null
 		};
 
@@ -27,9 +28,15 @@ class SaveScoreModal extends Modal {
 	handleSubmit = (e) => {
 	    e.preventDefault();
 
-	    if(this.state.username.trim() !== ""){
-	    	this.state.execFunc(this.state.username);
+	    if(this.state.lastUsernameSaved !== "" || this.state.username.trim() !== ""){
+	    	let username = this.state.lastUsernameSaved;
+	    	if(this.state.username.trim() !== "")
+	    		username = this.state.username;
 
+	    	this.state.execFunc(username);
+
+	    	localStorage.setItem("lastUser", username);
+	    	
 	    	this.hide();
 		}
 	}
@@ -40,7 +47,7 @@ class SaveScoreModal extends Modal {
 			    <h3>Congratulations!</h3>
 			    <p>You won the game. What's your name?</p>
 			    <form onSubmit={this.handleSubmit}>
-					<input type="text" placeholder="John smith" value={this.state.username} onChange={this.handleChange}/>
+					<input type="text" placeholder={this.state.lastUsernameSaved} value={this.state.username} onChange={this.handleChange}/>
 					<button type="submit" className="button">Save</button>
 				</form>
 			</div>

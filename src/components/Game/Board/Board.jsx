@@ -2,11 +2,11 @@ import React from 'react';
 
 import Square from './Square/Square';
 
-export default (board) => (
+export default (squares) => (
 	<table border="0" className="board">
 		<tbody>
       	{
-      		board.map((bx, xind) => 
+      		squares.map((bx, xind) => 
       		    (<tr key={xind}>
       		     	{
       		     		bx.map((by, yind) => (

@@ -8,6 +8,7 @@ class LeaveGameModal extends Modal {
 		super(props);
 
 		this.state = {...super.state, 
+			closeable: true,
 			execFunc: null
 		};
 	}
@@ -28,7 +29,7 @@ class LeaveGameModal extends Modal {
 		    <div>
 			    <h3>Are you sure you wanna leave this game?</h3>
 				<div className="buttons-group">
-					<button onClick={this.hide}>No</button>
+					<button onClick={this.hide} autoFocus>No</button>
 					<button className="red" onClick={this.leaveGame}>Yes</button>
 				</div>
 			</div>

@@ -1,5 +1,3 @@
-import { secondsToMinSeconds } from './_utils';
-
 export default class Score {
 
 	constructor(user, boardSize, bombs, time){
@@ -10,10 +8,6 @@ export default class Score {
 	}
 
 	get obtainScoreNumber(){
-		return this.boardSize[0]*this.boardSize[1]+this.bombs-this.time;
-	}
-
-	get timeString(){
-		return secondsToMinSeconds(this.time);
+		return this.boardSize[0]*this.boardSize[1]+this.bombs-this.time.seconds;
 	}
 }
