@@ -1,0 +1,17 @@
+{
+  "short_name": "Minesweeper",
+  "name": "Minesweeper",
+  "description": "The minesweeper web game. Choose your level (Beginner, Professional or Expert) and try win the game. Let play it to your friends and check out the top 10 scores.",
+  "icons": [
+    {
+      "src": "favicon.ico",
+      "sizes": "64x64 32x32 24x24 16x16",
+      "type": "image/x-icon"
+    }
+  ],
+  "start_url": "./index.html",
+  "display": "standalone",
+  "lang": "en-US",
+  "theme_color": "#f2f2f2",
+  "background_color": "#f2f2f2"
+}
