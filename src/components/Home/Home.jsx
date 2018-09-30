@@ -8,13 +8,14 @@ export default () => (
       	<Menu />
       	<Top />
       	<div className="instructions">
-      		<h3>Instructions:</h3>
-			<p> Game consists in clearing all the squares of the board that don't have a mine.
+      		<h3>How to play:</h3>
+			<p> The game is played by revealing squares of the grid by clicking or otherwise indicating each square. If a square containing a mine is revealed, the player loses the game.
 				<br/><br/>
-				Some squares have a number, this number indicates the mines around it. If a square has the number 3, it means that of the eight squares around it (if it isn't in a corner or edge) there are 3 mines and 5 without mines. If a square is found without a number, it indicates that none of the surrounding squares has a mine, empty squares are discovered automatically.
+				If no mine is revealed, a digit is instead displayed in the square, indicating how many adjacent squares contain mines; if no mines are adjacent, the square becomes blank, and all adjacent squares will be recursively revealed. The player uses this information to deduce the contents of other squares, and may either safely reveal each square or mark the square as containing a mine.
 				<br/><br/>
-				If a square with mine is discovered, the game is lost.
+				A flag or a question mark may be placed in an unrevealed square (right clicking the square) to serve as an aid to logical deduction.
 			</p>
+			<a href="https://en.wikipedia.org/wiki/Minesweeper_(video_game)" target="_blank" rel="noopener noreferrer">according to wikipedia</a>
       	</div>
    	</div>
 );

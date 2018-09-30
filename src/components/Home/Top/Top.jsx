@@ -2,7 +2,7 @@ import React from 'react';
 
 export default (scores) => (
 	<div className="top">
-      	<h3>Top won games:</h3>
+      	<h3>Top 10 games:</h3>
       	{scores.length === 0 && (
       		<p className="empty">No scores registered yet.</p>
       	)}
