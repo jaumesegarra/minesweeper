@@ -1,7 +1,7 @@
 # React Minesweeper 
 The minesweeper web game made with react-redux.
 
-Choose your level (Beginner, Professional or Expert) and try win the game. Let play it to your friends and check out the top 10 scores.
+Choose your level (Beginner, Professional or Expert) and try win the game. Let your friends play and check out the top 10 scores.
 
 ![Screenshoot](screenshoot.png)
 
