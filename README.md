@@ -5,7 +5,7 @@ Choose your level (Beginner, Professional or Expert) and try win the game. Let p
 
 ![Screenshoot](screenshoot.png)
 
-## Play online 
+## Play online 
 Go to [https://jaumesegarra.github.io/minesweeper](https://jaumesegarra.github.io/minesweeper) and ENJOY!
 
 ## Develop
